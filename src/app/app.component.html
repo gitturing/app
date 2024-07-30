@@ -1,0 +1,52 @@
+<h1 class="containerTitle">
+  {{title}}
+</h1>
+<br>
+
+<div *ngIf="this.service.lbolSignUp; then thenSignUp else elseSignUp"></div>
+<ng-template #thenSignUp>
+  <div>
+    <app-signup></app-signup>
+  </div>
+</ng-template>
+<ng-template #elseSignUp>
+  <div>
+    <div *ngIf="this.lbolUserLogu; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <nav class="navbar">
+        <ul class="menu">
+            <li><a routerLink="/home" class="menu-item">Inicio</a></li>
+            <li><a routerLink="/profile" class="menu-item">Profile</a></li>
+            <li><a routerLink="/accounts" class="menu-item">Accounts</a></li>
+            <li><a routerLink="/transactions" class="menu-item">Transactions</a></li>
+            <li><a routerLink="/dashboard" class="menu-item">Dashboard</a></li>
+            <li><a (click)="fnLogOut()" class="menu-item">Salir</a></li>
+        </ul>
+      </nav>
+      <router-outlet />
+    </ng-template>
+    <ng-template #elseBlock>
+      <div class="container">
+      <div class="login-container">
+        <div>
+          <label>User:</label>
+          <input type="text" maxlength="15" [(ngModel)]="lstrUser">
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="text" maxlength="15" [(ngModel)]="lstrPass">
+        </div>
+        <div>
+          <button type="button" (click)="fnLogIN()">login</button>
+        </div>
+        <div>
+          <br>
+          <label>{{lstrMessag}}</label>
+          <br><br>
+          <button type="button" (click)="fnSignUp()">Sign Up</button>
+        </div>
+      </div>
+      </div>
+    </ng-template>
+  </div>
+</ng-template>

@@ -1,0 +1,24 @@
+
+<body>
+    <div class="table-container">
+        <table *ngIf="lAccounts">
+            <thead>
+                <tr>
+                    <th>Cuenta</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                  <tr *ngFor="let row of lAccounts">
+                    <th>{{ row.NumeCuen }}</th>
+                    <th>{{ row.NombCuen }}</th>
+                  </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+
+
+
